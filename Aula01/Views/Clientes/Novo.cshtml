@@ -1,0 +1,27 @@
+﻿@model Aula01.Models.ClientesModelView
+<div class="row">
+
+    <div class="offset-4 col-4">
+        <div class="card">
+            <div class="card-header">
+                Cadastrar Cliente
+            </div>
+            <div class="card-body">
+
+                <form action="/Clientes/SalvarDados" method="post">
+                
+                    <label>Nome</label>
+                    <input type="text" name="Nome" class="form-control"  />
+                    <br />
+
+                    <label>Telefone</label>
+                    <input type="text" name="Telefone" class="form-control" />
+                    <br />
+                    <button type="submit" class="btn btn-success">
+                        Enviar dados
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

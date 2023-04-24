@@ -1,0 +1,46 @@
+﻿@model List<Aula01.Models.ClientesModelView>
+
+<div class="row">
+    <a href="/Clientes/Novo" class="btn btn-success">Cadastrar</a>
+    <div class="col-8 offset-2">
+        <div class="card">
+            <div class="card-header">
+                Lista de Clientes
+            </div>
+            <div class="card-body">
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nome</th>
+                            <th>Telefone</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (ClientesModelView cliente in Model)
+                        {
+                            <tr>
+                                <td>@cliente.Id</td>
+                                <td>@cliente.Nome</td>
+                                <td>@cliente.Telefone</td>
+                                <td>
+                                    <a href="/Clientes/Excluir/@cliente.Id" class="btn btn-danger">
+                                        Excluir    
+                                    </a>
+                                    <a href="/Clientes/Editar/@cliente.Id" class="btn btn-warning">
+                                        Editar    
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-2"></div>
+
+</div>
