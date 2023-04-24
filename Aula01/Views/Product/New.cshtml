@@ -1,0 +1,31 @@
+﻿@model Aula01.Models.ProductModelView
+<div class="row">
+
+    <div class="offset-4 col-4">
+        <div class="card">
+            <div class="card-header">
+                Cadastrar Produto
+            </div>
+            <div class="card-body">
+
+                <form action="/Product/SalvarDados" method="post">
+                
+                    <label>Nome</label>
+                    <input type="text" name="Name" placeholder="Ex: Mouse Redragon" class="form-control" />
+                    <br />
+
+                    <label>Quantidade</label>
+                    <input type="number" name="Quantity" class="form-control" />
+                    <br />
+
+                    <label>Valor Total R$</label>
+                    <input type="number" name="TotalValue" class="form-control" />
+                    <br />
+                    <button type="submit" class="btn btn-success">
+                        Cadastrar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

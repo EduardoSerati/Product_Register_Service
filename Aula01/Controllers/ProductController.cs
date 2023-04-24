@@ -4,44 +4,44 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Aula01.Controllers
 {
-    public class ClientesController : Controller
+    public class ProductController : Controller
     {
-        public static List<ClientesModelView> db = new List<ClientesModelView>();
+        public static List<ProductModelView> db = new();
 
-        public IActionResult SalvarDados(ClientesModelView dados)
+        public IActionResult SalvarDados(ProductModelView dados)
         {
             if (dados.Id > 0)
             {
-                Arquivo arquivo = new Arquivo();
+                Arquivo arquivo = new();
                 arquivo.EditarArquivo(dados);
                 //int index = db.FindIndex(a => a.Id == dados.Id);
                 //db[index] = dados;
             }
             else
             {
-                Random rand = new Random();
+                Random rand = new();
                 dados.Id = rand.Next(1, 9999);
                 db.Add(dados);
-                Arquivo arquivo = new Arquivo();
+                Arquivo arquivo = new();
                 arquivo.SalvarArquivo(dados);
             }
-            return RedirectToAction("Lista");
+            return RedirectToAction("List");
         }
 
-        public IActionResult Lista()
+        public IActionResult List()
         {
-            Arquivo arquivo = new Arquivo();
-            return View(arquivo.ListaClientes());
+            Arquivo arquivo = new();
+            return View(arquivo.ProductList());
         }
 
-        public IActionResult Excluir(int id)
+        public IActionResult Delete(int id)
         {
-            Arquivo arquivo = new Arquivo();
+            Arquivo arquivo = new();
             arquivo.ExcluirArquivo(id);
-            return RedirectToAction("Lista");
+            return RedirectToAction("List");
         }
 
-        public IActionResult Editar(int id)
+        public IActionResult Edit(int id)
         {
             //ClientesModelView cliente = db.Find(obj => obj.Id == id);
             //if (cliente != null)
@@ -52,12 +52,12 @@ namespace Aula01.Controllers
             //{
             //    return RedirectToAction("Lista");
             //}
-            Arquivo arquivo = new Arquivo();
+            Arquivo arquivo = new();
          
             return View(arquivo.LocalizarArquivo(id));
         }
 
-        public IActionResult Novo()
+        public IActionResult New()
         {
             
                 return View();

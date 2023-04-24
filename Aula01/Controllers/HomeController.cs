@@ -18,12 +18,12 @@ namespace Aula01.Controllers
             return View();
         }
 
-        public IActionResult MinhaTela()
+        public IActionResult Privacy()
         {
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Produtos()
         {
             return View();
         }
