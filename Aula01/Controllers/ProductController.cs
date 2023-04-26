@@ -8,62 +8,46 @@ namespace Aula01.Controllers
     {
         public static List<ProductModelView> db = new();
 
-        public IActionResult SalvarDados(ProductModelView dados)
+        public IActionResult DataSave(ProductModelView data)
         {
-            if (dados.Id > 0)
+            if (data.Id > 0)
             {
-                Arquivo arquivo = new();
-                arquivo.EditarArquivo(dados);
-                //int index = db.FindIndex(a => a.Id == dados.Id);
-                //db[index] = dados;
+                Archive archive = new();
+                archive.EditArchive(data);
             }
             else
             {
                 Random rand = new();
-                dados.Id = rand.Next(1, 9999);
-                db.Add(dados);
-                Arquivo arquivo = new();
-                arquivo.SalvarArquivo(dados);
+                data.Id = rand.Next(1, 100);
+                db.Add(data);
+                Archive archive = new();
+                archive.DataSave(data);
             }
             return RedirectToAction("List");
         }
 
         public IActionResult List()
         {
-            Arquivo arquivo = new();
-            return View(arquivo.ProductList());
+            Archive archive = new();
+            return View(archive.ProductList());
         }
 
         public IActionResult Delete(int id)
         {
-            Arquivo arquivo = new();
-            arquivo.ExcluirArquivo(id);
+            Archive archive = new();
+            archive.ExcluirArquivo(id);
             return RedirectToAction("List");
         }
 
         public IActionResult Edit(int id)
         {
-            //ClientesModelView cliente = db.Find(obj => obj.Id == id);
-            //if (cliente != null)
-            //{
-            //    return View(cliente);
-            //}
-            //else
-            //{
-            //    return RedirectToAction("Lista");
-            //}
-            Arquivo arquivo = new();
-         
-            return View(arquivo.LocalizarArquivo(id));
+            Archive archive = new();
+            return View(archive.FindArchive(id));
         }
 
         public IActionResult New()
         {
-            
                 return View();
-          
         }
-
-
     }
 }

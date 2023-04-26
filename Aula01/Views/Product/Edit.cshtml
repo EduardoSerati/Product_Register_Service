@@ -8,7 +8,7 @@
             </div>
             <div class="card-body">
 
-                <form action="/Product/SalvarDados" method="post">
+                <form action="/Product/DataSave" method="post">
                     <label>Id</label>
                     <input class="form-control" type="text" name="Id" readonly value="@Model.Id" />
                     <br />
@@ -21,7 +21,7 @@
                     <input type="number" name="Quantity" class="form-control" value="@Model.Quantity"/>
                     <br />
 
-                    <label>Valor Total</label>
+                    <label>Valor Total R$</label>
                     <input type="number" name="TotalValue" class="form-control" value="@Model.TotalValue"/>
                     <br />
                     <button type="submit" class="btn btn-success">

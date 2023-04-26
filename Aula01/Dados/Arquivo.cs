@@ -3,16 +3,16 @@ using System.Text.Json;
 
 namespace Aula01.Dados
 {
-    public class Arquivo
+    public class Archive
     {
-        public void SalvarArquivo(ProductModelView dados)
+        public void DataSave(ProductModelView data)
         {
             List<ProductModelView> array;
-            using (StreamReader r = new(@"data.json"))
+            using (StreamReader sr = new(@"data.json"))
             {
-                string meusDados = r.ReadToEnd();
-                array = JsonSerializer.Deserialize<List<ProductModelView>>(meusDados);
-                array.Add(dados);
+                string registerData = sr.ReadToEnd();
+                array = JsonSerializer.Deserialize<List<ProductModelView>>(registerData);
+                array.Add(data);
 
                 
             }
@@ -21,58 +21,58 @@ namespace Aula01.Dados
 
         public List<ProductModelView> ProductList()
         {
-            List<ProductModelView> retorno;
-            using (StreamReader r = new(@"data.json"))
+            List<ProductModelView> back;
+            using (StreamReader sr = new(@"data.json"))
             {
-                string meusDados = r.ReadToEnd();
-                retorno = JsonSerializer.Deserialize<List<ProductModelView>>(meusDados);
-                return retorno;
+                string registerData = sr.ReadToEnd();
+                back = JsonSerializer.Deserialize<List<ProductModelView>>(registerData);
+                return back;
 
             }
         }
 
         public void ExcluirArquivo(int id)
         {
-            List<ProductModelView> retorno;
-            using (StreamReader r = new(@"data.json"))
+            List<ProductModelView> back;
+            using (StreamReader sr = new(@"data.json"))
             {
-                string meusDados = r.ReadToEnd();
-                retorno = JsonSerializer.Deserialize<List<ProductModelView>>(meusDados);
-                ProductModelView item = retorno.Find(a => a.Id == id);
+                string registerData = sr.ReadToEnd();
+                back = JsonSerializer.Deserialize<List<ProductModelView>>(registerData);
+                ProductModelView item = back.Find(a => a.Id == id);
                 if(item != null)
                 {
-                    retorno.Remove(item);
+                    back.Remove(item);
                 }
 
             }
-            File.WriteAllText(@"data.json", JsonSerializer.Serialize(retorno));
+            File.WriteAllText(@"data.json", JsonSerializer.Serialize(back));
         }
 
-        public void EditarArquivo(ProductModelView dados)
+        public void EditArchive(ProductModelView data)
         {
-            List<ProductModelView> retorno;
-            using (StreamReader r = new(@"data.json"))
+            List<ProductModelView> back;
+            using (StreamReader sr = new(@"data.json"))
             {
-                string meusDados = r.ReadToEnd();
-                retorno = JsonSerializer.Deserialize<List<ProductModelView>>(meusDados);
-                int item = retorno.FindIndex(a => a.Id == dados.Id);
+                string registerData = sr.ReadToEnd();
+                back = JsonSerializer.Deserialize<List<ProductModelView>>(registerData);
+                int item = back.FindIndex(a => a.Id == data.Id);
                 if (item != null)
                 {
-                    retorno[item] = dados;
+                    back[item] = data;
                 }
 
             }
-            File.WriteAllText(@"data.json", JsonSerializer.Serialize(retorno));
+            File.WriteAllText(@"data.json", JsonSerializer.Serialize(back));
         }
 
-        public ProductModelView LocalizarArquivo(int Id)
+        public ProductModelView FindArchive(int Id)
         {
-            List<ProductModelView> retorno;
-            using (StreamReader r = new(@"data.json"))
+            List<ProductModelView> back;
+            using (StreamReader sr = new(@"data.json"))
             {
-                string meusDados = r.ReadToEnd();
-                retorno = JsonSerializer.Deserialize<List<ProductModelView>>(meusDados);
-                ProductModelView item = retorno.Find(a => a.Id == Id);
+                string registerData = sr.ReadToEnd();
+                back = JsonSerializer.Deserialize<List<ProductModelView>>(registerData);
+                ProductModelView item = back.Find(a => a.Id == Id);
                 if (item != null)
                 {
                     return item;
@@ -81,12 +81,7 @@ namespace Aula01.Dados
                 {
                     return new ProductModelView();
                 }
-
             }
-           
         }
-
     }
-        
-      
 }
